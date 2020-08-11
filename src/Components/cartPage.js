@@ -25,7 +25,7 @@ class CartPage extends React.Component {
         storedData = storedData.map(data => JSON.parse(data));
         let cartItems = Object.entries(storedData);
         return cartItems.map(([key, element]) => (
-            <tr>
+            <tr key={key}>
                 <td>{element.name}</td>
                 <td>₹ {element.price}</td>
                 <td>{element.quantity}</td>
