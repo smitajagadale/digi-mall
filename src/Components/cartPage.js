@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './cartPage.css';
+import { getTotalPrice } from '../ProductActions/actions';
 
 
 class CartPage extends React.Component {
@@ -35,7 +36,6 @@ class CartPage extends React.Component {
                     </div></td>
             </tr>
         ))
-
     }
 
     deleteAllCartEntries() {
@@ -62,6 +62,12 @@ class CartPage extends React.Component {
                         </thead>
                         <tbody>
                             {this.displayCartData()}
+                            <tr>
+                                <td>Total Price</td>
+                                <td>₹ {getTotalPrice()}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -32,7 +32,7 @@ class App extends React.Component {
           <Header cartValue={this.state.cartValue} />
           <div className="router-container">
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={props => <HomePage getQuantity={this.getItemsQuantityFromCart.bind(this)} {...props} />} />
               <Route path="/productDetails/:id" component={props => <ProductDetailsPage getQuantity={this.getItemsQuantityFromCart.bind(this)} {...props} />} />
               <Route path="/cartItems" component={props => <CartPage getQuantity={this.getItemsQuantityFromCart.bind(this)} {...props} />} />
             </Switch>

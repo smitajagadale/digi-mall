@@ -31,14 +31,6 @@ class ProductDetailsPage extends React.Component {
         }));
     }
 
-    // disableAddToCart(maxQuantity) {
-    //     if (this.state.quantity === maxQuantity) {
-    //         this.setState({
-    //             disabled: true,
-    //         })
-    //     }
-    // }
-
     renderSpecificationData() {
         if (this.state.detailsData && this.state.detailsData.length === 2) {
             const d1 = Object.entries(this.state.detailsData[1]);
@@ -56,6 +48,7 @@ class ProductDetailsPage extends React.Component {
 
     getExistingQuantityFromCart() {
         let count = 0;
+        let flag = false;
         if (localStorage.length === 0) {
             return count += 1;
         }
@@ -66,9 +59,9 @@ class ProductDetailsPage extends React.Component {
             if (this.id === item[1].id) {
                 return item[1].quantity + 1;
             }
-            else {
-                return count += 1;
-            }
+        }
+        if (!flag) {
+            return count += 1;
         }
     }
 
@@ -104,7 +97,6 @@ class ProductDetailsPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="loader-container">{this.state.loading === true ? <Loader /> : ''}</div>
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -116,9 +108,11 @@ class ProductDetailsPage extends React.Component {
                         {this.renderSpecificationData()}
                     </tbody>
                 </table>
-                <div className="addToCart-wrapper">
-                    <button type="submit" disabled={this.state.disabled} onClick={() => this.addItemToCart(this.id)}>Add to Cart</button>
-                </div>
+
+                {this.state.loading === true ? <div className="loader-container"><Loader /></div> :
+                    <div className="addToCart-wrapper">
+                        <button type="submit" disabled={this.state.disabled} onClick={() => this.addItemToCart(this.id)}>Add to Cart</button>
+                    </div>}
             </div>
         );
     }

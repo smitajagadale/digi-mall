@@ -29,6 +29,12 @@ export const fetchProductDetails = (id) => {
   });
 }
 
+export const fetchItemDetails = (id) => {
+  const catalogData = Object.entries(PRODUCTS);
+  const details = catalogData.find(([key, element]) => key === id);
+  return details;
+}
+
 export const addItemToCart = (obj1) => {
   localStorage.setItem(obj1.id, JSON.stringify(obj1));
 };
@@ -51,4 +57,17 @@ export const getTotalQuantity = () => {
       500
     )
   })
+}
+
+export const getTotalPrice = () => {
+  let totalPrice = 0;
+        let storedData = Object.values(localStorage);
+        if (storedData.length === 0) {
+          return 0;
+        }
+        storedData = storedData.map(data => JSON.parse(data));
+        storedData.forEach(d => {
+          totalPrice += d.price;
+        });
+        return totalPrice;
 }
