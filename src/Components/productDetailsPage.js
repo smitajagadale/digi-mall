@@ -44,7 +44,7 @@ class ProductDetailsPage extends React.Component {
             const d1 = Object.entries(this.state.detailsData[1]);
             if (d1) {
                 return d1.map(([key, element]) => (
-                    <tr>
+                    <tr key={key}>
                         <td>{PRODUCT_KEYS[key]}</td>
                         {key === 'price' ? <td>₹ {element}</td> : <td>{element}</td>}
                     </tr>

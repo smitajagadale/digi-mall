@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getTotalQuantity } from '../ProductActions/actions';
 import './header.css';
 
 class Header extends React.Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (
