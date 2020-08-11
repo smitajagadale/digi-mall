@@ -144,7 +144,7 @@ export const PRODUCTS = {
     launchYear: '2020',
     maxQuantity: 10,
   },
-  MI1: {
+  Sansui1: {
     name: 'Sansui 100cm (40 inch) HD Ready LED TV  (KLV-63R202G)',
     price: 22000,
     modelName: 'MLV-32R203G',
